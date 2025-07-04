@@ -1,1 +1,25 @@
+name: Discord Bot
 
+on:
+  schedule:
+    - cron: '0 * * * *'  # Run every hour on the hour
+  workflow_dispatch:      # Also allow manual trigger
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run the bot
+        run: python main.py
+        env:
+          TOKEN: ${{ secrets.TOKEN }}
