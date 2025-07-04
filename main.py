@@ -4,9 +4,9 @@ import os
 import threading
 import time
 
-# Auto-exit after 55 minutes to let GitHub Actions restart the bot cleanly
+# Auto-exit after 59 minutes to let GitHub Actions restart the bot cleanly
 def auto_exit():
-    time.sleep(60 * 55)
+    time.sleep(60 * 59)
     print("Restarting bot...")
     os._exit(0)
 
